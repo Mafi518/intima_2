@@ -1,0 +1,12 @@
+@import "./reset";
+@import "./fonts";
+@import "./variables";
+@import "./mixins";
+@import "./functions";
+* {
+  font-family: "Inter", sans-serif;
+}
+body {
+  background-color: $dark;
+  color: $white;
+}

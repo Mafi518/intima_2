@@ -1,0 +1,65 @@
+@mixin test($color: $red) {
+  color: $color;
+}
+
+@mixin container($width: $container_width) {
+  max-width: $width;
+}
+
+@mixin field($radius: $standart_radius, $bg: $second_grey) {
+  background-color: $bg;
+  border-radius: $radius;
+  display: inline-flex;
+  align-items: flex-start;
+  padding: 8px 20px;
+
+  :deep(.field__container) {
+    display: flex;
+    align-items: center;
+  }
+
+  :deep(.field__input) {
+    background-color: $bg;
+    outline: none;
+    border: none;
+  }
+  .field__left-icon {
+    margin-right: 8px;
+  }
+  .field__right-icon {
+    margin-left: 8px;
+  }
+}
+
+@mixin btn($color: $dark, $bg: $accent) {
+  color: $color;
+  background-color: $bg;
+  cursor: pointer;
+  font-size: 18px;
+  border: none;
+  padding: 10px 0;
+  border-radius: 8px;
+  :deep(.baseButton__right-icon) {
+    margin-left: 10px;
+  }
+  :deep(.baseButton__right-adiitional) {
+  }
+  &:hover {
+  }
+}
+
+@mixin h1($color: $white) {
+  font-family: "Mulish";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 54px;
+  line-height: 68px;
+  color: $color;
+}
+
+@mixin h2($color: $dark) {
+  line-height: 100%;
+  color: $color;
+  font-size: 42px;
+  font-weight: 500;
+}
