@@ -94,7 +94,41 @@ const validateSigninFields = () => {
 
 <template>
   <header class="header">
-    <container tag="div" class="header__container">
+    <popup
+      v-bind="signinDialog"
+      @close="toggleDialog(signinDialog, false)"
+      class="signin__dialog"
+    >
+      <container tag="div" class="signin__dialog-container">
+        <field
+          v-for="(field, idx) in [
+            signinDialog.form.login,
+            signinDialog.form.pass,
+          ]"
+          :key="idx"
+          v-bind="field"
+          ref="signin_fields"
+          class="signin__dialog-field"
+        />
+
+        <container tag="div" class="signin__dialog-wrapper">
+          <custom-radio
+            :label="signinDialog?.form?.remember?.label"
+            :value="signinDialog?.form?.remember?.label"
+            v-model:modelValue="signinDialog.form.remember.val"
+            class="signin__dialog-radio"
+          />
+
+          <a href="" class="signin__dialog-link">Забыли пароль?</a>
+        </container>
+
+        <btn @click="validateSigninFields" class="signin__dialog-submit">
+          Войти
+        </btn>
+      </container>
+    </popup>
+
+    <container tag="div" class="header__container header__container-first">
       <a href="tel:+89508596299" class="header__link header__container-link">
         8 (950) 859-62-99
       </a>
@@ -114,7 +148,7 @@ const validateSigninFields = () => {
       </NuxtLink>
     </container>
 
-    <container tag="div" class="header__container">
+    <container tag="div" class="header__container header__container-second">
       <div class="header__wrapper">
         <divider
           width="1px"
@@ -170,40 +204,6 @@ const validateSigninFields = () => {
         />
       </div>
     </container>
-
-    <popup
-      v-bind="signinDialog"
-      @close="toggleDialog(signinDialog, false)"
-      class="signin__dialog"
-    >
-      <container tag="div" class="signin__dialog-container">
-        <field
-          v-for="(field, idx) in [
-            signinDialog.form.login,
-            signinDialog.form.pass,
-          ]"
-          :key="idx"
-          v-bind="field"
-          ref="signin_fields"
-          class="signin__dialog-field"
-        />
-
-        <container tag="div" class="signin__dialog-wrapper">
-          <custom-radio
-            :label="signinDialog?.form?.remember?.label"
-            :value="signinDialog?.form?.remember?.label"
-            v-model:modelValue="signinDialog.form.remember.val"
-            class="signin__dialog-radio"
-          />
-
-          <a href="" class="signin__dialog-link">Забыли пароль?</a>
-        </container>
-
-        <btn @click="validateSigninFields" class="signin__dialog-submit">
-          Войти
-        </btn>
-      </container>
-    </popup>
   </header>
 </template>
 
@@ -225,12 +225,18 @@ const validateSigninFields = () => {
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid $grey;
-    &:first-child {
-      padding: 10px 12px;
-    }
-    &:last-child {
-      padding: 15px 12px;
-    }
+  }
+
+  // .header__container-first
+
+  &__container-first {
+    padding: 10px 12px;
+  }
+
+  // .header__container-second
+
+  &__container-second {
+    padding: 15px 12px;
   }
 
   // .header__link
@@ -268,10 +274,20 @@ const validateSigninFields = () => {
   &__wrapper {
     display: flex;
     align-items: center;
-    &:first-child {
+  }
+
+  // header__container-first
+
+  &__container-first {
+    .header__wrapper {
       margin-right: 12px;
     }
-    &:last-child {
+  }
+
+  // header__container-second
+
+  &__container-second {
+    .header__wrapper {
       margin-left: 12px;
     }
   }
@@ -444,13 +460,23 @@ const validateSigninFields = () => {
 
     &__container {
       &:first-child {
-        display: none;
       }
       &:last-child {
-        .header__wrapper {
-          &:nth-child(2) {
-            display: none;
-          }
+      }
+    }
+
+    // .header__container-first
+
+    &__container-first {
+      display: none;
+    }
+
+    // .header__container-second
+
+    &__container-second {
+      .header__wrapper {
+        &:nth-child(2) {
+          display: none;
         }
       }
     }

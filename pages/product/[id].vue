@@ -633,7 +633,7 @@ const toFavorite = (props) => {
     <container tag="div" class="product__mailing">
       <typography
         tag="h2"
-        txt="Будьте в курсе наших новинок и спецпредложениях!"
+        txt="Будьте в курсе наших новинок и спецпредложений!"
         class="product__mailing-title"
       />
       <container tag="div" class="product__mailing-wrapper">

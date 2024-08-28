@@ -26,7 +26,7 @@ const searchInput = ref({
 
 const sortSelect = ref({
   options: ["Популярности", "Цене"],
-  val: "",
+  val: "Популярности",
 });
 
 const selectedRange = ref({ min: 1000, max: 3000 });
@@ -470,8 +470,8 @@ const openFilter = () => {
     background-image: url("/assets/media/img/catalog_bg.png");
     background-size: cover;
     background-position: center;
-    padding-top: 200px;
-    margin-top: -100px;
+    padding-top: 215px;
+    margin-top: -125px;
     z-index: 2;
     position: relative;
   }
@@ -527,11 +527,13 @@ const openFilter = () => {
   &__sort-title {
     margin-right: 2vw;
     font-size: 16px;
+    white-space: nowrap;
   }
 
   // .catalog__sort-select
 
   &__sort-select {
+    min-width: 192px;
   }
 
   // .catalog__receipts
@@ -897,6 +899,7 @@ const openFilter = () => {
     // .catalog__receipts-exit
 
     &__receipts-exit {
+      cursor: pointer;
     }
 
     // .catalog__body
@@ -1032,11 +1035,15 @@ const openFilter = () => {
     // .catalog__head-left
 
     &__head-left {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
     }
 
     // .catalog__head-title
 
     &__head-title {
+      margin-bottom: 15px;
     }
 
     // .catalog__head-search
@@ -1047,11 +1054,15 @@ const openFilter = () => {
     // .catalog__head-right
 
     &__head-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
     }
 
     // .catalog__sort-title
 
     &__sort-title {
+      margin-bottom: 15px;
     }
 
     // .catalog__sort-select

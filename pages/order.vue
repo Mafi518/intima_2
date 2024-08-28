@@ -92,7 +92,7 @@ const firstStepFields = ref({
     label: "Адрес",
     isRequired: true,
     is_valid: false,
-    val: "",
+    val: [],
   },
   register: {
     label: "Зарегистрируйте меня и сохраните заказ в личном кабинете",
@@ -311,7 +311,7 @@ const steps = ref([
   },
 ]);
 
-const currStep = ref(3);
+const currStep = ref(1);
 
 const validateFields = (step) => {
   if (step === 1) {
@@ -349,6 +349,8 @@ const changeStep = (action) => {
   if (action === "next" && currStep?.value !== steps.value?.length + 1) {
     currStep.value += 1;
   }
+
+  console.log(action);
 
   if (action === "prev" && currStep?.value !== 1) {
     currStep.value -= 1;
@@ -469,7 +471,11 @@ const changeStep = (action) => {
             </container>
           </container>
           <container tag="div" class="order__step-controls">
-            <container tag="div" class="order__step-prev">
+            <container
+              tag="div"
+              class="order__step-prev"
+              @click="changeStep('prev')"
+            >
               <ArrowLeft />
             </container>
             <btn
@@ -576,7 +582,11 @@ const changeStep = (action) => {
           </p>
 
           <container tag="div" class="order__step-controls">
-            <container tag="div" class="order__step-prev">
+            <container
+              tag="div"
+              class="order__step-prev"
+              @click="changeStep('prev')"
+            >
               <ArrowLeft />
             </container>
             <btn

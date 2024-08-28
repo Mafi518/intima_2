@@ -7,12 +7,14 @@
   >
     <div class="selected-values">
       {{
-        selectedValues.length
+        selectedValues?.length
           ? selectedValues.join(", ")
           : label?.length
           ? label
           : "Выберите опции"
       }}
+
+      <!-- {{ label?.length }} -->
       <ArrDown />
     </div>
     <div v-if="showDropdown" class="dropdown">
@@ -164,6 +166,7 @@ defineExpose({
   cursor: pointer;
   user-select: none;
   font-size: 14px;
+  width: 100%;
 }
 
 .selected-values {

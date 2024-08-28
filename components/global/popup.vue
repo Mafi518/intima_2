@@ -54,26 +54,28 @@ const closePopup = () => {
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999999;
+  z-index: 9999999999;
+  width: 100vw;
+  height: 100vh;
 }
 
 .popup {
   background: #ededed;
   padding: 16px;
-  width: 550px;
-  max-width: 90%;
+  max-width: 450px;
+  width: 100%;
   color: $dark;
-  position: relative;
-
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .popup-title {
+  margin-top: 15px;
   font-size: 34px;
   font-family: "Mulish", sans-serif;
   font-weight: bold;
@@ -96,23 +98,31 @@ const closePopup = () => {
   right: 16px;
 }
 
+@media (max-width: 768px) {
+  .popup {
+    max-width: 90%;
+  }
+}
+
 @media (max-width: 400px) {
   .close-button {
-  background: none;
-  border: none;
-  font-size: 20px;
-  cursor: pointer;
-  position: absolute;
-  top: 8px;
-  right: 8px;
-}
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+  }
 }
 
 @media (max-height: 750px) {
   .popup-overlay {
-    align-items: initial;
   }
   .popup {
+    top: 20px;
+    height: 90vh;
+    transform: translate(-50%, 0%);
     overflow-y: auto;
   }
 }
