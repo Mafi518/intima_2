@@ -14,11 +14,15 @@ const mailingFields = ref();
 const router = useRouter();
 const screen_store = useScreenStore();
 
+const config = useRuntimeConfig();
+
+const serverUrl = config.public.api_url;
+
 const prodData = {
   images: [
-    "http://localhost:3000/_nuxt/assets/media/img/prod_img_1.png",
-    "http://localhost:3000/_nuxt/assets/media/img/prod_img_2.png",
-    "http://localhost:3000/_nuxt/assets/media/img/prod_img_3.png",
+    `${serverUrl}/_nuxt/assets/media/img/prod_img_1.png`,
+    `${serverUrl}/_nuxt/assets/media/img/prod_img_2.png`,
+    `${serverUrl}/_nuxt/assets/media/img/prod_img_3.png`,
   ],
   rating: 4.5,
   isLiked: false,

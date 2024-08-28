@@ -4,7 +4,7 @@ import HeartIcon from "../icons/HeartIcon.vue";
 const emit = defineEmits(["clck", "favoriteClck", "cartClck"]);
 
 const config = useRuntimeConfig();
-const server_url = config.public.api_url;
+const serverUrl = config.public.api_url;
 
 interface Props {
   title: string;
@@ -15,7 +15,7 @@ interface Props {
 }
 
 const props = defineProps<Props>();
-const imgSrc = `http://localhost:3000/_nuxt/assets/media/img/${props.img}`;
+const imgSrc = `${serverUrl}/_nuxt/assets/media/img/${props.img}`;
 </script>
 
 <template>

@@ -8,8 +8,11 @@ interface Props {
 const props = defineProps<Props>();
 
 const emit = defineEmits(["clck"]);
+const config = useRuntimeConfig();
 
-const imgSrc = `http://localhost:3000/_nuxt/assets/media/img/${props.img}`;
+const serverUrl = config.public.api_url;
+
+const imgSrc = `${serverUrl}/_nuxt/assets/media/img/${props.img}`;
 </script>
 
 <template>
