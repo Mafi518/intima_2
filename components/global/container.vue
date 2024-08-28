@@ -1,6 +1,6 @@
 <script setup lang="ts" >
 interface Props {
-  tag: "section" | "div" | "article";
+  tag: "section" | "div" | "article" | "footer" | "header" | "main";
 }
 
 const { tag = "div" } = defineProps<Props>();

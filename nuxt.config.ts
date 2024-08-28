@@ -63,6 +63,7 @@ export default defineNuxtConfig({
 
   components: [{ path: "~/components/global/", extensions: ["vue"] }],
 
-  modules: ["@pinia/nuxt", "nuxt-svgo-loader"],
+  modules: ["@pinia/nuxt", "nuxt-svgo-loader", "nuxt-swiper", "@vueuse/nuxt"],
+  plugins: ["~/plugins/v-maska.js"],
   compatibilityDate: "2024-07-24",
 });

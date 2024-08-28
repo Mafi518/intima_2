@@ -57,9 +57,39 @@
   color: $color;
 }
 
-@mixin h2($color: $dark) {
+@mixin h2($color: $dark, $margin-bottom: 30px) {
+  font-family: "Mulish";
   line-height: 100%;
   color: $color;
   font-size: 42px;
   font-weight: 500;
+  margin-bottom: $margin-bottom;
+}
+
+@mixin h3($color: $dark, $margin-bottom: 30px) {
+  font-family: "Mulish";
+  line-height: 100%;
+  color: $color;
+  font-size: 40px;
+  font-weight: 500;
+  margin-bottom: $margin-bottom;
+}
+
+@mixin scroll() {
+  overflow-x: auto;
+  padding-bottom: 12px;
+  &::-webkit-scrollbar {
+    width: 4px; /* Ширина всего элемента навигации */
+    height: 12px; /* Высота всего элемента навигации */
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $white; /* Цвет дорожки */
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $accent; /* Цвет бегунка */
+    border-radius: 20px; /* Округление бегунка */
+    border: 4px solid $white; /* Оформление границ бегунка */
+  }
 }
