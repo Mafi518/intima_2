@@ -140,9 +140,9 @@ const menu_links = [
         {{ title }}
       </NuxtLink>
       <a href="tel:+89508596299" class="header__link">8 (950) 859-62-99</a>
-      <a href="mailto:infoexample@gmail.com" class="header__link"
-        >infoexample@gmail.com</a
-      >
+      <a href="mailto:info@intima-shop.com" class="header__link">
+        info@intima-shop.com
+      </a>
     </Container>
   </Container>
 </template>

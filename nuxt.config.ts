@@ -16,6 +16,7 @@ if (existsSync(envFilePath)) {
   const envConfig = readFileSync(envFilePath, "utf-8");
   envConfig.split("\n").forEach((line) => {
     const [key, value] = line.split("=");
+
     if (key && value) {
       process.env[key.trim()] = value.trim();
     }

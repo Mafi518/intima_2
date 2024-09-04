@@ -326,8 +326,6 @@ const validateFields = (step) => {
       changeStep("next");
     }
     console.log(isValid, "isValidFirstStep");
-
-    // console.log(select);
   }
 
   if (step === 2) {
@@ -349,8 +347,6 @@ const changeStep = (action) => {
   if (action === "next" && currStep?.value !== steps.value?.length + 1) {
     currStep.value += 1;
   }
-
-  console.log(action);
 
   if (action === "prev" && currStep?.value !== 1) {
     currStep.value -= 1;

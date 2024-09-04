@@ -152,6 +152,7 @@ const route = useRoute();
   &__sidebar {
     border: 1px solid $sec-grey;
     max-width: 316px;
+    min-width: 216px;
     width: 100%;
     display: flex;
     flex-direction: column;

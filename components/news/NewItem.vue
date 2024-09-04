@@ -40,6 +40,7 @@ const imgSrc = `${serverUrl}/_nuxt/assets/media/img/${props.img}`;
     max-height: 396px;
     font-family: "Inter", sans-serif;
     padding: 15px;
+    cursor: pointer;
   }
 
   // .new__item-img

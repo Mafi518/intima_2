@@ -8,6 +8,7 @@ import User from "@/assets/media/svg/user.svg";
 import HeaderDropdown from "@/components/header_dropdown/dropdown.vue";
 
 const router = useRouter();
+const route = useRoute();
 
 const signin_fields = ref();
 
@@ -75,6 +76,12 @@ const signinDialog = ref({
   },
 });
 
+const expandedFlag = ref(false);
+
+const toggleDropdown = () => {
+  expandedFlag.value = !expandedFlag.value;
+};
+
 const toggleDialog = (dialog, flag) => {
   dialog.visible = flag;
 };
@@ -133,10 +140,10 @@ const validateSigninFields = () => {
         8 (950) 859-62-99
       </a>
       <a
-        href="mailto:infoexample@gmail.com"
+        href="mailto:info@intima-shop.com"
         class="header__link header__container-link"
       >
-        infoexample@gmail.com
+        info@intima-shop.com
       </a>
       <NuxtLink
         v-for="({ title, to }, idx) in page_links"
@@ -167,10 +174,43 @@ const validateSigninFields = () => {
       </div>
       <div class="header__wrapper">
         <div class="header__links">
-          <NuxtLink to="/catalog" class="header__link">
-            Каталог
-            <ArrowDown />
-          </NuxtLink>
+          <container
+            tag="div"
+            class="header__droplist"
+            :class="{
+              expanded: expandedFlag,
+              active: route?.path === '/catalog',
+            }"
+          >
+            <container
+              tag="div"
+              @click="toggleDropdown"
+              class="header__droplist-head"
+            >
+              Каталог
+              <ArrowDown />
+            </container>
+            <container
+              tag="div"
+              v-if="expandedFlag"
+              class="header__droplist-footer"
+            >
+              <container
+                tag="div"
+                @click="router.push('/catalog')"
+                class="header__droplist-option"
+              >
+                Для нее
+              </container>
+              <container
+                tag="div"
+                @click="router.push('/catalog')"
+                class="header__droplist-option"
+              >
+                Для него
+              </container>
+            </container>
+          </container>
           <NuxtLink to="/about" class="header__link">О компании</NuxtLink>
           <NuxtLink to="/news" class="header__link">Новости</NuxtLink>
           <NuxtLink to="/mentions" class="header__link">Отзывы</NuxtLink>
@@ -332,6 +372,64 @@ const validateSigninFields = () => {
       &:last-child {
         margin-right: 0;
       }
+    }
+  }
+
+  // .header__droplist
+
+  &__droplist {
+    margin-right: 30px;
+    position: relative;
+    cursor: pointer;
+
+    &.expanded {
+      .header__droplist-head {
+        svg {
+          transform: rotate(180deg);
+        }
+      }
+    }
+
+    &.active {
+      .header__droplist-head {
+        color: $accent;
+      }
+    }
+  }
+
+  // .header__droplist-head
+
+  &__droplist-head {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    svg {
+      transition: 0.3s ease;
+      margin-left: 4px;
+    }
+  }
+
+  // .header__droplist-footer
+
+  &__droplist-footer {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: $dark;
+  }
+
+  // .header__droplist-option
+
+  &__droplist-option {
+    white-space: nowrap;
+    padding: 6px;
+    font-size: 16px;
+    transition: 0.3s ease;
+    &:hover {
+      background-color: $accent;
+    }
+    &:last-child {
+      margin-bottom: 0;
     }
   }
 

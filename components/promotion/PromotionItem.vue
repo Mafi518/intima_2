@@ -38,6 +38,7 @@ const imgSrc = `${serverUrl}/_nuxt/assets/media/img/${props.img}`;
     justify-content: center;
     position: relative;
     min-height: 300px;
+    cursor: pointer;
     &::before {
       content: "";
       position: absolute;

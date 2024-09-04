@@ -12,14 +12,16 @@ import PhoneIcon from "@/assets/media/svg/phone.svg";
 import MailIcon from "@/assets/media/svg/Mail.svg";
 import LocationIcon from "@/assets/media/svg/location.svg";
 import ArrLeft from "@/assets/media/svg/arr-left.svg";
+import ArrowDown from "@/assets/media/svg/chev-down.svg";
 
-// const selectedOptions = ref<string[]>([]);
-// const options = ["option1", { value: "option2" }, "option3"];
+const router = useRouter();
+const route = useRoute();
 
-// const customValidator = (values: string[]) => {
-//   // Ваша логика валидации
-//   return true; // если все в порядке
-// };
+const expandedFlag = ref(false);
+
+const toggleDropdown = () => {
+  expandedFlag.value = !expandedFlag.value;
+};
 
 const searchInput = ref({
   placeholder: "Поиск нижнего белья...",
@@ -37,7 +39,6 @@ const searchInput = ref({
 });
 
 const pageLinks = [
-  { title: "Каталог", to: "/catalog" },
   { title: "О компании", to: "/about" },
   { title: "Новости", to: "/news" },
   { title: "Обзоры", to: "/reviews" },
@@ -152,7 +153,7 @@ const pageFooterLinks = [
             </container>
             <container tag="div" class="footer__body-contact footer__mail">
               <MailIcon />
-              <a href="mailto:infoexample@gmail.com">infoexample@gmail.com</a>
+              <a href="mailto:info@intima-shop.com">info@intima-shop.com</a>
             </container>
             <container tag="div" class="footer__body-contact footer__location">
               <LocationIcon />
@@ -164,13 +165,51 @@ const pageFooterLinks = [
           </container>
         </container>
         <container tag="div" class="footer__body-right">
+          <container
+            tag="div"
+            class="footer__droplist"
+            :class="{
+              expanded: expandedFlag,
+              active: route?.path === '/catalog',
+            }"
+          >
+            <container
+              tag="div"
+              @click="toggleDropdown"
+              class="footer__droplist-head"
+            >
+              Каталог
+              <ArrowDown />
+            </container>
+            <container
+              tag="div"
+              v-if="expandedFlag"
+              class="footer__droplist-footer"
+            >
+              <container
+                tag="div"
+                @click="router.push('/catalog')"
+                class="footer__droplist-option"
+              >
+                Для нее
+              </container>
+              <container
+                tag="div"
+                @click="router.push('/catalog')"
+                class="footer__droplist-option"
+              >
+                Для него
+              </container>
+            </container>
+          </container>
+
           <NuxtLink
             v-for="(link, idx) in pageLinks"
             :key="idx"
             :to="link?.to"
             class="footer__body-right-links"
           >
-            <ArrLeft v-if="idx === 0" /> {{ link?.title }}
+            {{ link?.title }}
           </NuxtLink>
         </container>
       </container>
@@ -228,6 +267,63 @@ const pageFooterLinks = [
     @include container;
     padding: 15px 12px;
     margin: 0 auto;
+  }
+
+  // .footer__droplist
+
+  &__droplist {
+    margin-right: 30px;
+    position: relative;
+    cursor: pointer;
+
+    &.expanded {
+      .footer__droplist-head {
+        svg {
+          transform: rotate(180deg);
+        }
+      }
+    }
+
+    &.active {
+      .footer__droplist-head {
+        color: $accent;
+      }
+    }
+  }
+
+  // .footer__droplist-head
+
+  &__droplist-head {
+    display: flex;
+    align-items: center;
+    svg {
+      transition: 0.3s ease;
+      margin-left: 4px;
+    }
+  }
+
+  // .footer__droplist-footer
+
+  &__droplist-footer {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: $dark;
+  }
+
+  // .footer__droplist-option
+
+  &__droplist-option {
+    white-space: nowrap;
+    padding: 6px;
+    font-size: 16px;
+    transition: 0.3s ease;
+    &:hover {
+      background-color: $accent;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   // .footer__head-left

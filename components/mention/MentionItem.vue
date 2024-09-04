@@ -76,6 +76,7 @@ const emit = defineEmits(["clck"]);
   &__item-more {
     display: flex;
     align-items: center;
+    cursor: pointer;
   }
 
   // .mention__item-details

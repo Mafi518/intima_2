@@ -72,9 +72,9 @@ const news = reactive([
     <container tag="div" class="new__list">
       <container tag="div" class="new__list-head">
         <typography tag="h2" txt="Интересные новости" class="new__list-title" />
-        <btn @click="router.push('/news')" class="new__list-btn"
-          >Больше новостей</btn
-        >
+        <btn @click="router.push('/news')" class="new__list-btn">
+          Больше новостей
+        </btn>
       </container>
 
       <container tag="div" class="new__list-wrapper">

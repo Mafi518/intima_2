@@ -11,6 +11,8 @@ import NewList from "~/components/news/NewList.vue";
 import MentionList from "~/components/mention/MentionList.vue";
 import ViewedList from "~/components/viewed/ViewedList.vue";
 
+const config = useRuntimeConfig();
+
 const advantages = [
   { icon: Advantage1, title: "Эксклюзивные новинки" },
   { icon: Advantage2, title: "Высокое качество товаров" },
